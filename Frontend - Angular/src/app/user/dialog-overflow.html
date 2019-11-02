@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Jarvis: {{data[0].jarvis}}</h2>
+<h1 class="sizediff" mat-dialog-title>{{data[1].fullname}}</h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<h1 class="sizediff" mat-dialog-title>{{data[1].email}}</h1>
+<h2 mat-dialog-title>Expert: {{data[0].expert}}</h2>
+<div mat-dialog-content>
+    <p>Upload Date: {{data[0].date}}</p>
+    <p>Symptoms: {{data[0].symptoms}}</p>
+    <P>Comments: {{data[0].comments}}</P>
+    <img src="assets/images/{{data[0].filename}}" alt="image">
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+</div>

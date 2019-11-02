@@ -1,0 +1,94 @@
+<div *ngIf="show" class="jumbotron">
+    <h1 class="display-4">Welcome to DDC Lab, {{userData['fullname']}}</h1>
+    <button class="btn btn-outline-warning" style="float: right" (click)="goHome()">Logout</button>
+</div>
+
+<mat-tab-group *ngIf="show" mat-stretch-tabs color="accent" backgroundColor="primary">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Upload
+        </ng-template>
+
+        <div class="container">
+            <div class="row" style="text-align: center">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="background:#e9967aeb">
+                    <h3>Select Symptoms</h3>
+                    <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                        <div class="col-md-12 form-group">
+                            <mat-select formControlName="symptoms" placeholder="symptoms" multiple>
+                                <mat-option *ngFor="let symptom of symptomlist" [value]="symptom">{{symptom}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+
+                        <div class="form-group">
+                            <mat-form-field class="form-group example-full-width">
+                                <textarea matInput placeholder="Additional Comments"
+                                    formControlName="comments"></textarea>
+                            </mat-form-field>
+                        </div>
+
+                        <h3>Upload Image</h3>
+
+                        <input formControlName="file" type="file" />
+                        <button type="submit" class="btn btn-outline-success">Submit</button>
+                    </form>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Results
+        </ng-template>
+        <div class="container-fluid table-down">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef> Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="comments">
+                            <th mat-header-cell *matHeaderCellDef> Comments </th>
+                            <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="jarvis">
+                            <th mat-header-cell *matHeaderCellDef> JARVIS </th>
+                            <td mat-cell *matCellDef="let element"> {{element.jarvis}} </td>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="expert">
+                            <th mat-header-cell *matHeaderCellDef> Expert </th>
+                            <td mat-cell *matCellDef="let element"> {{element.expert}} </td>
+                        </ng-container>
+
+                        <!-- <Action Column  -->
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-raised-button (click)="openDialog(element,expert)">More</button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

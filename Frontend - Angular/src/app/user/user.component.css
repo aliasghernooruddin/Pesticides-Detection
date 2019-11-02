@@ -1,0 +1,15 @@
+.jumbotron {
+  margin-bottom: 0px !important;
+}
+
+table {
+  width: 100%;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.table-down{
+  margin-top: 4rem;
+}

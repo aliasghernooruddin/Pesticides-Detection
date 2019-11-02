@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Jarvis: {{data.jarvis}}</h2>
+<h2 mat-dialog-title>Expert: <input type="text" style="width:85%" [(ngModel)]="expertReview" /></h2>
+<div mat-dialog-content>
+    <p>Upload date: {{data.date}}</p>
+    <p>Symptoms by user: {{data.symptoms}}</p>
+    <P>Comments by user: {{data.comments}}</P>
+    <img src="../../assets/images/{{data.filename}}" alt="image">
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-button (click)="saveObject(data.id)">Save</button>
+</div>

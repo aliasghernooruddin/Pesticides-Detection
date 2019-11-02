@@ -1,0 +1,93 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form session-form" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                <a href="home">
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-landscape"></i>
+                    </span>
+                </a>
+
+                <span class="login100-form-title p-b-34 p-t-27">
+                    Registration Form
+                </span>
+
+                <div class="form-group wrap-input100">
+                    <input class="input100" formControlName="fullname" type="text" placeholder="Full Name"
+                        [ngClass]="{ 'is-invalid':submitted && f.fullname.errors }">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                        <div *ngIf="f.fullname.errors.required">First Name required</div>
+                    </div>
+                </div>
+
+                <div class="form-group wrap-input100">
+                    <mat-select class="input100" (ngModelChange)="changeAction($event)" formControlName="usertype">
+                        <mat-option *ngFor="let user of users" [value]="user">{{user}}</mat-option>
+                    </mat-select>
+                    <span class="focus-input100" data-placeholder="&#xf230;"></span>
+                </div>
+
+                <div *ngIf="show" class="form-group wrap-input100">
+                    <mat-select class="input100" formControlName="domains" multiple>
+                        <mat-option *ngFor="let domain of domains" [value]="domain">{{domain}}</mat-option>
+                    </mat-select>
+                    <span class="focus-input100" data-placeholder="&#xf215;"></span>
+                </div>
+
+                <div class="form-group wrap-input100">
+                    <input class="input100" formControlName="username" type="text" placeholder="Username"
+                        [ngClass]="{ 'is-invalid':submitted && f.username.errors }">
+                    <span class="focus-input100" data-placeholder="&#xf215;"></span>
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username required</div>
+                    </div>
+                </div>
+
+                <div class="form-group wrap-input100">
+                    <input class="input100" formControlName="phone" type="number" placeholder="Phone no"
+                        [ngClass]="{ 'is-invalid':submitted && f.phone.errors }">
+                    <span class="focus-input100" data-placeholder="&#xf240;"></span>
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required">Phone no required</div>
+                    </div>
+                </div>
+
+                <div class="form-group wrap-input100">
+                    <input class="input100" formControlName="email" type="email" placeholder="Email"
+                        [ngClass]="{ 'is-invalid':submitted && f.email.errors }">
+                    <span class="focus-input100" data-placeholder="&#xf250;"></span>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+
+                <div class="form-group wrap-input100">
+                    <input class="input100" autocomplete="password" formControlName="password" type="password"
+                        placeholder="Password" [ngClass]="{ 'is-invalid':submitted && f.password.errors }">
+                    <span class="focus-input100" data-placeholder="&#xf260;"></span>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password Required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+
+                <div class="form-group wrap-input100">
+                    <input class="input100" autocomplete="password" formControlName="cpassword" type="password"
+                        placeholder="Confirm Password">
+                    <span class="focus-input100" data-placeholder="&#xf260;"></span>
+                    <div class="alert alert-danger" *ngIf="regForm.controls.cpassword.errors?.MatchPassword">
+                        Passwords do not match</div>
+                </div>
+
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
