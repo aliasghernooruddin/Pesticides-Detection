@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome to DDC Lab, {{ userData['fullname'] | titlecase }} </ion-title>
+  </ion-toolbar>
+  <ion-button size="small" (click)="goback()"> Back </ion-button>
+</ion-header>
+
+<ion-content *ngIf='show'>
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+
+    <ion-list>
+      <ion-list-header>Select Symptoms</ion-list-header>
+      <ion-select multiple="true" formControlName="symptoms">
+        <ion-select-option *ngFor="let symptom of symptomlist">{{symptom}}</ion-select-option>
+      </ion-select>
+    </ion-list>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Comments</ion-label>
+      <ion-textarea type="text" formControlName="comments"></ion-textarea>
+    </ion-item>
+
+
+    <h5 ion-text color="dark">Upload Image</h5>
+    <ion-input formControlName="file" accept="image/*" type="file"></ion-input>
+
+    <div class="ion-padding">
+      <ion-button size="large" type="submit" expand="block">Submit</ion-button>
+    </div>
+  </form>
+
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        <h4> Date </h4>
+      </ion-col>
+      <ion-col>
+        <h4> Expert Opinion</h4>
+      </ion-col>
+      <ion-col>
+        <h4> Expert Name</h4>
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row class="ion-align-items-center" *ngFor="let item of rows; let i = index">
+      <ion-col>
+        {{item.date | date :'medium'}}
+      </ion-col>
+      <ion-col>
+        {{item.expert | titlecase }}
+      </ion-col>
+      <ion-col>
+        {{item.expertAssigned}}
+      </ion-col>
+      <ion-col>
+        <ion-button size="small" (click)="presentModal(item)" type="button">More</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+</ion-content>

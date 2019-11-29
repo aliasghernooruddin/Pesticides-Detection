@@ -1,9 +1,9 @@
 import pandas as pd 
 
 model = pd.read_excel('disease.xlsx')
-model.set_index(model['Unnamed: 0'],drop=True,inplace=True)
-del model.index.name
-del model['Unnamed: 0']
+# model.set_index(model['Unnamed: 0'],drop=True,inplace=True)
+# del model.index.name
+# del model['Unnamed: 0']
 
 
 def getExpertResult(symptoms):

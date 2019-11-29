@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar class="ion-text-center">
+        <ion-title>Jarvis: {{user.jarvis}}</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row>
+            <ion-col>Experts Name: {{expert.fullname}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Experts Email: {{expert.email}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>Expert Opinion: {{user.expert}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <p>User Upload Date: {{user.date}}</p>
+                <p>User Symptoms: {{user.symptoms}}</p>
+                <P>User Comments: {{user.comments}}</P>
+                <img src="assets/images/{{user.filename}}" alt="image">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-text-center">
+                <ion-button (click)="closeModal()">Close</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,9 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ResearcherComponent } from './researcher/researcher.component';
+import { ExpertComponent } from './expert/expert.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '*', redirectTo: 'home' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
+  { path: 'user/:name', loadChildren: () => import('./user/user.module').then(m => m.UserPageModule) },
+  { path: 'researcher/:name', component: ResearcherComponent },
+  { path: 'expert/:name', component: ExpertComponent },
 ];
 
 @NgModule({

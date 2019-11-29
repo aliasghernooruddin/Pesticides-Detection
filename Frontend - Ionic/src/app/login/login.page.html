@@ -1,0 +1,41 @@
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+      <div class="ion-text-center">
+        <h4>Login Form</h4>
+      </div>
+      <div class="ion-padding">
+
+        <form [formGroup]="logForm" (ngSubmit)="login()">
+          <ion-item>
+            <ion-input type="text" placeholder="Username" formControlName="uname"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+          </ion-item>
+
+          <ion-select formControlName="usertype" interface="action-sheet">
+            <ion-select-option>User</ion-select-option>
+            <ion-select-option>Expert</ion-select-option>
+            <ion-select-option >Researcher</ion-select-option>
+          </ion-select>
+
+          <div class="ion-padding">
+            <ion-button size="large" type="submit" [disabled]="!logForm.valid" expand="block">Login</ion-button>
+          </div>
+
+        </form>
+
+      </div>
+
+
+    </ion-col>
+
+
+
+
+
+
+  </ion-row>
+</ion-grid>

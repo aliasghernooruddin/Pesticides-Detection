@@ -9,7 +9,7 @@ import shutil
 import uuid
 from datetime import datetime
 import random
-# from SVM import getExpertResult
+from SVM import getExpertResult
 # from CNN import test_single_image
 
 cred = credentials.Certificate("./firebaseCredentials.json")
@@ -60,7 +60,6 @@ def login():
 
 @app.route('/userDetails', methods=['POST'])
 def getUserDetails():
-    breakpoint
     data = json.loads(request.data)
     doc_ref = db.collection(data['type']).document(data['username']).get()
     user_details = doc_ref.to_dict()
@@ -105,9 +104,10 @@ def postUploadFile():
         ext = os.path.splitext(filename)[1]
         jarvis = getExpertResult(data['symptoms'])
         # result = test_single_image('assets/'+filename)
-        os.rename('assets/' + filename, '../frontendAlpha/src/assets/images/' + uniq_id + ext)
+        import pdb; pdb.set_trace()
+        os.rename('assets/' + filename, '../Frontend - Ionic/src/assets/images/' + uniq_id + ext)
         data = {'comments': data['comments'], 'filename': uniq_id+ext, 'symptoms': data['symptoms'],
-                'username': data['username'], 'jarvis': result, 'expert': None, 'expertAssigned': data['expert'], 'date': today}
+                'username': data['username'], 'jarvis': jarvis, 'expert': None, 'expertAssigned': data['expert'], 'date': today}
         data = db.collection(u'uploads').add(data)
 
         return jsonify({'result': 'success'})

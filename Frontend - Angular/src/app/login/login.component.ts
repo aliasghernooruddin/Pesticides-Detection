@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         else{
           this.openSnackBar('Incorrect username or password')
         }
-      }errpr => {
+      }error => {
         this.openSnackBar('Server not Responding')
       }
     })

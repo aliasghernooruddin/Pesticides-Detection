@@ -1,5 +1,5 @@
 <div class="jumbotron">
-        <h1 class="display-4">Welcome to Expert's Panel, {{userData['fullname']}}</h1>
+        <h1 class="display-4">Welcome to Expert's Panel, {{ userData['fullname'] | titlecase }} </h1>
         <button class="btn btn-outline-warning" style="float: right" (click)="goHome()">Logout</button>
     </div>
 
