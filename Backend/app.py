@@ -128,6 +128,13 @@ def updateExpertOpinion():
             return jsonify({'success': True})
         except:
             return jsonify({'success': False})
+
+
+@app.route('/test', methods=['GET'])
+def test():
+    return jsonify({'message':'Success'})
+
+
 '''
 this code is used to upload files to google cloud storage
 '''
@@ -146,3 +153,8 @@ this code is used to upload files to google cloud storage
 
 # for values in os.listdir('images'):
 #     upload_blob('pesticides_images', values, values)
+
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host = '0.0.0.0',port="33")

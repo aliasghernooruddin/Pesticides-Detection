@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { APIService } from '../apis.service';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UserMoreModal } from './user.modal';
@@ -23,7 +23,7 @@ export class UserPage implements OnInit {
   rows = [];
   data = { type: 'user' }
 
-  constructor(private navCtrl:NavController, public modalController: ModalController, private formBuilder: FormBuilder, private route: ActivatedRoute, private api: APIService, private toastController: ToastController) {
+  constructor(private navCtrl:NavController, private platform:Platform, public modalController: ModalController, private formBuilder: FormBuilder, private route: ActivatedRoute, private api: APIService, private toastController: ToastController) {
     this.username = this.route.snapshot.paramMap.get('name')
     this.data['username'] = this.username
     this.getData()
@@ -34,6 +34,13 @@ export class UserPage implements OnInit {
       expert: [''],
       file: [null, Validators.required]
     })
+
+    this.platform.ready().then(() => {
+      this.platform.backButton.subscribe(() => {
+        
+        this.navCtrl.pop();
+      });
+    });
   }
 
   getData() {
@@ -65,9 +72,6 @@ export class UserPage implements OnInit {
     });
   }
 
-  goback() {
-    this.navCtrl.pop();
- }
 
   async presentToast(message) {
     const toast = await this.toastController.create({

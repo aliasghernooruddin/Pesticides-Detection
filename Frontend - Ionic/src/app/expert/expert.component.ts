@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../apis.service';
-import { ToastController, ModalController, NavController } from '@ionic/angular';
+import { ToastController, ModalController, NavController, Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ExpertModal } from './expert.modal';
 
@@ -16,10 +16,17 @@ export class ExpertComponent implements OnInit {
   data = { type: 'expert' }
   dataSource: [];
 
-  constructor(private navCtrl:NavController, private route: ActivatedRoute, public modalController: ModalController, private toastController: ToastController, private api: APIService) {
+  constructor(private navCtrl:NavController, public platform: Platform, private route: ActivatedRoute, public modalController: ModalController, private toastController: ToastController, private api: APIService) {
     this.username = this.route.snapshot.paramMap.get('name')
     this.data['username'] = this.username
     this.getData()
+
+    this.platform.ready().then(() => {
+      this.platform.backButton.subscribe(() => {
+        
+        this.navCtrl.pop();
+      });
+    });
   }
 
   getData() {
@@ -49,10 +56,6 @@ export class ExpertComponent implements OnInit {
     });
     toast.present();
   }
-
-  goback() {
-    this.navCtrl.pop();
- }
 
   ngOnInit() {
   }

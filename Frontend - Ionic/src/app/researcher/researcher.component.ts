@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../apis.service';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, Platform } from '@ionic/angular';
 import { ResearcherModal } from '../researcher/researcher.modal';
 
 @Component({
@@ -14,12 +14,19 @@ export class ResearcherComponent implements OnInit {
   username: string;
   userData = {}
   data = { type: 'researcher' }
-  dataSource: [];
+  dataSource: []
 
-  constructor(private navCtrl:NavController, public modalController: ModalController, private route: ActivatedRoute, private api: APIService, ) {
+  constructor(private navCtrl: NavController, public platform: Platform, public modalController: ModalController, private route: ActivatedRoute, private api: APIService, ) {
     this.username = this.route.snapshot.paramMap.get('name')
     this.data['username'] = this.username
     this.getData()
+
+    this.platform.ready().then(() => {
+      this.platform.backButton.subscribe(() => {
+        
+        this.navCtrl.pop();
+      });
+    });
   }
 
   getData() {
@@ -40,10 +47,6 @@ export class ResearcherComponent implements OnInit {
     });
     return await modal.present();
   }
-
-  goback() {
-    this.navCtrl.pop();
- }
 
   ngOnInit() {
   }
