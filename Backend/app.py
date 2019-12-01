@@ -11,7 +11,7 @@ from datetime import datetime
 import random
 from SVM import getExpertResult
 from google.cloud import storage
-# from CNN import test_single_image
+from CNN import test_single_image
 
 cred = credentials.Certificate("./firebaseCredentials.json")
 FIRESTORE = firebase_admin.initialize_app(cred)

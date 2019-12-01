@@ -185,28 +185,9 @@ print ('Time: ', elapsed)
 #Model summary
 model.summary()
 
-# #Graphing our training and validation
-# acc = history.history['acc']
-# val_acc = history.history['val_acc']
-# loss = history.history['loss']
-# val_loss = history.history['val_loss']
-# epochs = range(len(acc))
-# plt.plot(epochs, acc, 'r', label='Training acc')
-# plt.plot(epochs, val_acc, 'b', label='Validation acc')
-# plt.title('Training and validation accuracy')
-# plt.ylabel('accuracy') 
-# plt.xlabel('epoch')
-# plt.legend()
-# plt.figure()
-# plt.plot(epochs, loss, 'r', label='Training loss')
-# plt.plot(epochs, val_loss, 'b', label='Validation loss')
-# plt.title('Training and validation loss')
-# plt.ylabel('loss') 
-# plt.xlabel('epoch')
-# plt.legend()
-# plt.show()
-
 model.evaluate(test_data, test_labels)
+
+model.save('my_model') 
 
 print('test data', test_data)
 preds = np.round(model.predict(test_data),0) 
