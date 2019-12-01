@@ -107,10 +107,10 @@ def postUploadFile():
         # uniq_id = uuid.uuid4().hex[8:18]
         # ext = os.path.splitext(filename)[1]
         jarvis = getExpertResult(data['symptoms'])
-        # result = test_single_image('assets/'+filename)
+        result = test_single_image('assets/'+filename)
         # os.rename('assets/' + filename, #           '../Frontend - Ionic/src/assets/images/' + uniq_id + ext)
         data = {'comments': data['comments'], 'filename': filename, 'symptoms': data['symptoms'],
-                'username': data['username'], 'jarvis': jarvis, 'expert': None, 'expertAssigned': data['expert'], 'date': today}
+                'username': data['username'], 'jarvis': result, 'expert': None, 'expertAssigned': data['expert'], 'date': today}
         data = db.collection(u'uploads').add(data)
 
         return jsonify({'result': 'success'})
