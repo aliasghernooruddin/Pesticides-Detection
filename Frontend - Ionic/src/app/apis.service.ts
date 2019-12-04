@@ -9,7 +9,7 @@ interface Response { data: any; }
 })
 export class APIService {
 
-  baseUrl: string = 'http://192.168.0.103:33/';
+  baseUrl: string = 'https://pesticides-detection.appspot.com/';
   loginUrl: string = this.baseUrl + 'login'
   registerUrl: string = this.baseUrl + 'register';
   getUserDetailsUrl:string = this.baseUrl + 'userDetails';

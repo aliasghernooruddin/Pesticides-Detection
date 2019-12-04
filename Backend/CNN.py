@@ -187,8 +187,6 @@ model.summary()
 
 model.evaluate(test_data, test_labels)
 
-model.save('my_model') 
-
 print('test data', test_data)
 preds = np.round(model.predict(test_data),0) 
 #to fit them into classification metrics and confusion metrics, some additional modificaitions are required

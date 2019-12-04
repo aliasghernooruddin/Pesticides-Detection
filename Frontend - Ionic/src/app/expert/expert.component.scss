@@ -1,0 +1,13 @@
+ion-grid.md.hydrated {
+  background: url("../../assets/expert.jpg") 100% 100%;
+  background-size: cover;
+}
+
+$white-color: #fff;
+$height100: 100%;
+
+ion-grid {
+  width: 100%;
+  height: $height100;
+  background: #dfdfdf;
+}

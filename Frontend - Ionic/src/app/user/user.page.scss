@@ -1,17 +1,31 @@
 .header .col {
-    background-color:lightgrey;
+  background-color: lightgrey;
 }
 
 .col {
-    border: solid 1px grey;
-    border-bottom-style: none;
-    border-right-style: none;
+  border: solid 1px grey;
+  border-bottom-style: none;
+  border-right-style: none;
 }
 
 .col:last-child {
-    border-right: solid 1px grey;
+  border-right: solid 1px grey;
 }
 
 .row:last-child .col {
-    border-bottom: solid 1px grey;
+  border-bottom: solid 1px grey;
+}
+
+ion-grid.md.hydrated {
+  background: url("../../assets/user.jpg") 100% 100%;
+  background-size: cover;
+}
+
+$white-color: #fff;
+$height100: 100%;
+
+ion-grid {
+  width: 100%;
+  height: $height100;
+  background: #dfdfdf;
 }

@@ -14,6 +14,7 @@ import { ResearcherModal } from './researcher/researcher.modal';
 import { ExpertComponent } from './expert/expert.component';
 import { ExpertModal } from './expert/expert.modal';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
     ExpertComponent,
     ExpertModal,
     HomeComponent,
+    RegisterComponent,
   ],
   entryComponents: [UserMoreModal, ResearcherModal, ExpertModal],
   imports: [

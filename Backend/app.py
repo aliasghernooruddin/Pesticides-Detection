@@ -11,7 +11,8 @@ from datetime import datetime
 import random
 from SVM import getExpertResult
 from google.cloud import storage
-from CNN import test_single_image
+# from CNN import test_single_image
+from imageNameCNN import imageDetection
 
 cred = credentials.Certificate("./firebaseCredentials.json")
 FIRESTORE = firebase_admin.initialize_app(cred)
@@ -106,11 +107,12 @@ def postUploadFile():
         # shutil.copy('images/'+filename, 'assets')
         # uniq_id = uuid.uuid4().hex[8:18]
         # ext = os.path.splitext(filename)[1]
-        jarvis = getExpertResult(data['symptoms'])
-        result = test_single_image('assets/'+filename)
+        # jarvis = getExpertResult(data['symptoms'])
+        jarvis = imageDetection(filename)
+        # result = test_single_image('assets/'+filename)
         # os.rename('assets/' + filename, #           '../Frontend - Ionic/src/assets/images/' + uniq_id + ext)
         data = {'comments': data['comments'], 'filename': filename, 'symptoms': data['symptoms'],
-                'username': data['username'], 'jarvis': result, 'expert': None, 'expertAssigned': data['expert'], 'date': today}
+                'username': data['username'], 'jarvis': jarvis, 'expert': None, 'expertAssigned': data['expert'], 'date': today}
         data = db.collection(u'uploads').add(data)
 
         return jsonify({'result': 'success'})
@@ -139,20 +141,20 @@ def test():
 this code is used to upload files to google cloud storage
 '''
 
-# def upload_blob(bucket_name, source_file_name, destination_blob_name):
-#     """Uploads a file to the bucket."""
-#     storage_client = storage.Client.from_service_account_json(
-#         'storageCredentials.json')
-#     bucket = storage_client.get_bucket(bucket_name)
-#     blob = bucket.blob(destination_blob_name)
-#     blob.upload_from_filename('images/'+source_file_name)
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+    """Uploads a file to the bucket."""
+    storage_client = storage.Client.from_service_account_json(
+        'storageCredentials.json')
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    blob.upload_from_filename('images/'+source_file_name)
 
-#     print('Blob {} is publicly accessible at {}'.format(
-#         blob.name, blob.public_url))
+    print('Blob {} is publicly accessible at {}'.format(
+        blob.name, blob.public_url))
 
 
-# for values in os.listdir('images'):
-#     upload_blob('pesticides_images', values, values)
+for values in os.listdir('images'):
+    upload_blob('pesticides_images', values, values)
 
 
 if __name__ == '__main__':

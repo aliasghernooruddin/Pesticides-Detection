@@ -9,7 +9,7 @@ interface Response { data: any; }
 @Injectable()
 export class RepositoryService {
 
-   baseUrl: string = 'http://127.0.0.1:5000/';
+   baseUrl: string = 'https://pesticides-detection.appspot.com/';
    loginUrl: string = this.baseUrl + 'login'
    registerUrl: string = this.baseUrl + 'register';
    getUserDetailsUrl:string = this.baseUrl + 'userDetails';

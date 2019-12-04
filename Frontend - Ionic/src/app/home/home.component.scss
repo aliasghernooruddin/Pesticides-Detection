@@ -1,6 +1,6 @@
 ion-grid.md.hydrated {
-  background: url("../../assets/agriculture.jpg") no-repeat 100% 100%;
-  opacity: 65;
+  background: url("../../assets/home.jpg") 100% 100%;
+  background-size: cover;
 }
 
 $white-color: #fff;
@@ -23,4 +23,16 @@ ion-col {
 
 ion-button {
   font-weight: 300;
+}
+
+.btn-1 {
+  position: absolute;
+  top: 45%;
+  min-width: 96%;
+}
+
+.btn-2 {
+  position: absolute;
+  top: 55%;
+  min-width: 96%;
 }
