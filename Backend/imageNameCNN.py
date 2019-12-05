@@ -8,6 +8,6 @@ def imageDetection(name):
     elif 'lr' in name:
         return "Leaf Rust"
     elif 'fhb' in name:
-	return "Fusarium Head Blight"
+        return "Fusarium Head Blight"
     else:
         return "No Match Found..."
