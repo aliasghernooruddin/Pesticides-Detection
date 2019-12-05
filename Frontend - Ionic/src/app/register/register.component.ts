@@ -33,15 +33,7 @@ export class RegisterComponent implements OnInit {
   get f() { return this.regForm.controls; }
 
   findMe() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.regForm.value['longitude'] = position.coords.longitude;
-        this.regForm.value['latitude'] = position.coords.latitude;
-        this.registerUser()
-      });
-    } else {
-      this.registerUser()
-    }
+    this.registerUser()
   }
 
   async presentToast(message) {

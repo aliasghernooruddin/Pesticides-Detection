@@ -141,20 +141,20 @@ def test():
 this code is used to upload files to google cloud storage
 '''
 
-def upload_blob(bucket_name, source_file_name, destination_blob_name):
-    """Uploads a file to the bucket."""
-    storage_client = storage.Client.from_service_account_json(
-        'storageCredentials.json')
-    bucket = storage_client.get_bucket(bucket_name)
-    blob = bucket.blob(destination_blob_name)
-    blob.upload_from_filename('images/'+source_file_name)
+# def upload_blob(bucket_name, source_file_name, destination_blob_name):
+#     """Uploads a file to the bucket."""
+#     storage_client = storage.Client.from_service_account_json(
+#         'storageCredentials.json')
+#     bucket = storage_client.get_bucket(bucket_name)
+#     blob = bucket.blob(destination_blob_name)
+#     blob.upload_from_filename('images/'+source_file_name)
 
-    print('Blob {} is publicly accessible at {}'.format(
-        blob.name, blob.public_url))
+#     print('Blob {} is publicly accessible at {}'.format(
+#         blob.name, blob.public_url))
 
 
-for values in os.listdir('images'):
-    upload_blob('pesticides_images', values, values)
+# for values in os.listdir('images'):
+#     upload_blob('pesticides_images', values, values)
 
 
 if __name__ == '__main__':
