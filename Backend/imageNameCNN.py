@@ -7,5 +7,7 @@ def imageDetection(name):
         return "Common Root Rot"
     elif 'lr' in name:
         return "Leaf Rust"
+    elif 'fhb' in name:
+	return "Fusarium Head Blight"
     else:
-        return "Fusarium Head Blight"
+        return "No Match Found..."
